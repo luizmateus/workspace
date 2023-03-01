@@ -1,0 +1,5 @@
+{
+  "/micro-service/login-route": "/login",
+  "/micro-service/logout-route": "/logout",
+  "/micro-service/change-password-route": "/changePassword"
+}

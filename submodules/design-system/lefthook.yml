@@ -1,0 +1,14 @@
+pre-commit:
+  parallel: true
+  commands:
+    lint:
+      files: git diff --name-only @{push}
+      glob: '*.{js,ts,jsx,tsx}'
+      run: yarn lint {files}
+      skip: merge
+commit-msg:
+  parallel: true
+  commands:
+    commitlint:
+      run: npx commitlint --edit
+      skip: merge

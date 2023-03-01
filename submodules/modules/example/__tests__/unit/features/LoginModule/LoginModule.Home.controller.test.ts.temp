@@ -1,0 +1,67 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import '@testing-library/jest-native/extend-expect';
+import { renderHook, act } from '@testing-library/react-hooks';
+import { useController } from '../../../../src/features/LoginModule/Home/controller';
+import * as AccessTokenService from '../../../../src/services/use-cases/auth-customer/access-token';
+import * as GatewayServices from '../../../../src/services/use-cases/crypto/keys';
+import * as CryptoServicesCreateKeys from '../../../../src/services/use-cases/crypto/encrypt/createKeys';
+import * as CryptoServicesSaveKeys from '../../../../src/services/use-cases/crypto/encrypt//saveKeys';
+import * as SaveUserServiceDecode from '../../../../src/services/use-cases/auth-customer/save-user/decodeJwt';
+import * as SaveUserServiceSaveSession from '../../../../src/services/use-cases/auth-customer/save-user/saveSession';
+
+import { dataAccessTokenMock, createKeysMock, JWTDecodedMock } from '../../../mocks/features/LoginModule';
+
+describe('Home >> controller', () => {
+  const spyUseAccessToken = jest.spyOn(AccessTokenService, 'useAccessToken');
+  const spyUseValidateGateway = jest.spyOn(GatewayServices, 'useValidateGateway');
+  const spyUseCryptoServices = {
+    createKeys: jest.spyOn(CryptoServicesCreateKeys, 'createKeys'),
+    saveKeys: jest.spyOn(CryptoServicesSaveKeys, 'saveKeys'),
+  };
+  const spySaveUserServices = {
+    decodeJwt: jest.spyOn(SaveUserServiceDecode, 'decodeJwt'),
+    saveSession: jest.spyOn(SaveUserServiceSaveSession, 'saveSession'),
+  };
+
+  const mockUseAccesTokenResult = {
+    mutate: jest.fn(),
+    isLoading: true,
+    data: dataAccessTokenMock,
+  } as any;
+
+  const mockValidateGatewayResult = {
+    mutateAsync: jest.fn(),
+    isLoading: true,
+  } as any;
+
+  beforeEach(() => {
+    spyUseAccessToken.mockReturnValue(mockUseAccesTokenResult);
+    spyUseValidateGateway.mockReturnValue(mockValidateGatewayResult);
+    spyUseCryptoServices.createKeys.mockReturnValue(createKeysMock);
+    spyUseCryptoServices.saveKeys.mockImplementation(jest.fn());
+    spySaveUserServices.decodeJwt.mockReturnValue(JWTDecodedMock);
+    spySaveUserServices.saveSession.mockImplementation(jest.fn());
+  });
+
+  it('validategateway', async () => {
+    const expectedResult = {
+      loginMutate: mockUseAccesTokenResult.mutate,
+      isloadingLogin: mockUseAccesTokenResult.isLoading,
+      isloadingValidateLoading: mockValidateGatewayResult.isLoading,
+    };
+
+    const { result } = renderHook(() => useController());
+
+    await act(async () => result.current.validategateway({ access_token: '' } as any));
+
+    const { validategateway, ...currentResult } = result.current;
+
+    expect(spyUseAccessToken).toBeCalled();
+    expect(spyUseValidateGateway).toBeCalled();
+    expect(spyUseCryptoServices.createKeys).toBeCalled();
+    expect(spySaveUserServices.decodeJwt).toBeCalled();
+    expect(spySaveUserServices.saveSession).toBeCalled();
+    expect(spyUseCryptoServices.saveKeys).toBeCalled();
+    expect(currentResult).toEqual(expectedResult);
+  });
+});

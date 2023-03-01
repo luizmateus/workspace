@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "879975234651",
+    "project_id": "mobk-main",
+    "storage_bucket": "mobk-main.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:879975234651:android:62aced08dcd46d2477d37e",
+        "android_client_info": {
+          "package_name": "com.original.mobk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "879975234651-fone6r7f857llporg9s42pvnj8mu2hp1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgVbb2hO9GNPK4juRa_SA7W2mUr8aLz_g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "879975234651-fone6r7f857llporg9s42pvnj8mu2hp1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

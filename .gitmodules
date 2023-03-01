@@ -1,0 +1,20 @@
+[submodule "submodules/design-system"]
+	path = submodules/design-system
+	url = https://gitlab.com/mobk/design-system
+	branch = master
+	ignore = all
+[submodule "submodules/engine"]
+	path = submodules/engine
+	url = https://gitlab.com/mobk/engine
+	branch = master
+	ignore = all
+[submodule "submodules/modules/example"]
+	path = submodules/modules/example
+	url = https://gitlab.com/mobk/modules/example
+	branch = master
+	ignore = all
+[submodule "submodules/main"]
+	path = submodules/main
+	url = https://gitlab.com/mobk/main
+	branch = master
+	ignore = all

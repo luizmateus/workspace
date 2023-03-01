@@ -1,0 +1,43 @@
+{
+  "name": "@mobk/workspace",
+  "version": "0.0.1",
+  "private": true,
+  "description": "@mobk/workspace",
+  "repository": "https://mdeamf.github.io",
+  "license": "MIT",
+  "author": "Maurício Francisco <mauricio.francisco@gft.com> (https://mdeamf.github.io)",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "design:android": "cd submodules/design-system/demo && yarn android",
+    "design:ios": "cd submodules/design-system/demo && yarn ios",
+    "design:prepare": "cd submodules/design-system && yarn && cd demo && yarn && NODE_OPTIONS=\"--openssl-legacy-provider\" yarn prestart",
+    "design:web": "cd submodules/design-system/demo && NODE_OPTIONS=\"--openssl-legacy-provider\" yarn storybook",
+    "dev:deploy": "node --no-warnings ./scripts/dev/deploy.js",
+    "dev:emu": "node ./scripts/dev/emu.js",
+    "dev:metro": "cd submodules/main && yarn start",
+    "dev:mock": "json-server ./mocks/json-server/db.json --routes ./mocks/json-server/routes.json -d 1000 -p 7000",
+    "dev:publish": "node --no-warnings ./scripts/dev/publish.js",
+    "dev:refresh": "node --no-warnings ./scripts/dev/refresh.js",
+    "dev:run": "node ./scripts/dev/run.js",
+    "dev:tag": "node ./scripts/dev/tag.js",
+    "dev:watch": "node --no-warnings ./scripts/dev/watch.js",
+    "docs": "mkdocs serve",
+    "env:clean": "node ./scripts/env/clean.js",
+    "env:doctor": "node ./scripts/env/doctor.js",
+    "env:init": "node --no-warnings ./scripts/env/init.js",
+    "env:set": "node ./scripts/env/set.js"
+  },
+  "dependencies": {
+    "boxen": "^7.0.0",
+    "chalk": "^5.1.2",
+    "chokidar": "^3.5.3",
+    "json-diff": "^1.0.0",
+    "json-server": "^0.17.1",
+    "lodash": "^4.17.21",
+    "ora": "^6.1.2",
+    "prompts": "^2.4.2",
+    "slash": "^5.0.0",
+    "tree-kill": "^1.2.2"
+  }
+}

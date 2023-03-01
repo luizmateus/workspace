@@ -1,0 +1,16 @@
+# node.js
+#
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+coverage
+config/storage
+mobk.code-workspace
+site
+
+# Yalc and Yarn
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+.pnp.*

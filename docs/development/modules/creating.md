@@ -1,0 +1,3 @@
+Por regra, todo módulo deve nascer do repositório `@mobk/module-example` ........
+
+TO-DO (Pendente c/ Maurício)

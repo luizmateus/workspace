@@ -1,0 +1,201 @@
+
+
+<!-- HTML DO COMPONENTE SEI -->
+
+<div class="row sei-container" style="margin-top: 19px; padding-bottom: 1px !important;">
+  <div class="col-25">
+  <p> </p>
+  </div>
+  <div class="col-25 has-icon-circle" ng-class="{'moveToRight12': !enableShare}">
+    <!-- <a class="icon-circle-correct"> -->
+      <!-- <i class="ui-icon-pdf" on-tap="generatePDF()"></i> -->
+      <img src="images/icon-mis-icn-receipt-pdf.svg" class="iconmisicn_receipt_pdf" on-tap="generatePDF()">
+    <!-- </a> -->
+  </div>
+  <div class="col-25 has-icon-circle" ng-show="enableShare">
+    <!-- <a class="icon-circle-correct"> -->
+      <!-- <i class="ui-icon-loan" on-tap="socialSharing()"></i> -->
+      <img src="images/icon-mis-icn-receipt-share.svg" class="iconmisicn_receipt_share" ng-click="socialSharing()">
+    <!-- </a> -->
+  </div>
+  <div class="col-25">
+    <p> </p>
+  </div>  
+</div>
+
+<!-- JAVASCRIPT (DIRECTIVE ANGULARJS) DO VINCULADO AO HTML -->
+
+//sei - salvar, enviar e imprimir
+BancoOriginal.directive('sei', ['ReportService', 'LoadingService', 'Utils','SessionService', '$filter', 'AlertService','$rootScope', '$ionicScrollDelegate', function(ReportService, LoadingService, Utils, SessionService, $filter, AlertService,$rootScope, $ionicScrollDelegate) { 
+  return {
+    restrict:'E',
+    templateUrl: 'templates/sei.html',
+    replace: true,
+    scope:{
+      reportFor:"@reportFor",
+      mailSubject:"=mailSubject",
+      extraParam:"=extraParam",
+      enableShare:"=enableShare",
+      regionId:"=regionId"
+    },
+    controller: function ($scope, $parse, SessionService){
+      
+      if(typeof $scope.enableShare === 'undefined'){
+        $scope.enableShare = false;
+      }
+      
+      function reportFunc(handleSuccess, handleError, extraParams) {
+        ReportService[$scope.reportFor](handleSuccess, handleError, extraParams);
+      }
+
+      $scope.generatePDF = function generatePDF(){
+
+        /*LoadingService.showDefault(); 
+
+        var onSuccess = function (result) {
+          console.log('generatePDF . $scope.extraParam: ' + JSON.stringify($scope.extraParam));
+          console.log('generatePDF . result: ' + JSON.stringify(result));
+
+          var info = result.invocationResult;
+          $download.genericDownload(info.name, info.file, LoadingService.hide, onFailure, $scope.extraParam);
+        };
+
+        var onFailure = function () {
+          LoadingService.hide();
+          //$state.go('tab.payment-slip-error-bill-pdf');
+        };
+        ReportService.genericMap(onSuccess, onFailure, $scope.extraParam);*/
+        
+        if($rootScope.utilizacaoTrackAction == true){         
+          ADB.trackAction("mbpf.screeninteraction.extratodaconta.gerarextratopdf", null);
+        }
+        
+        LoadingService.showDefault();
+
+        reportFunc(function success(result){
+          //console.log('generatePDF . result: ' + JSON.stringify(result));
+          //console.log('generatePDF . $scope.extraParam: ' + JSON.stringify($scope.extraParam));
+
+          LoadingService.hide();
+
+          // $download.genericDownload(result.invocationResult.name, result.invocationResult.file, success, failure);
+          $download.genericDownload(result.invocationResult.name, result.invocationResult.file, 
+          function(res){
+            console.warn(res)
+          }, 
+          function(err){
+            console.warn(err)
+          });
+        }, failure, $scope.extraParam);
+      };
+
+      $scope.socialSharing = function socialSharing(){
+        console.log('socialSharing()');
+        LoadingService.showDefault();
+        
+        htmlCanvas();
+      };
+
+      function startSharing(nameOfFile, urlBase64){ 
+        var params = {
+            message : 'Comprovante do Banco Original.',
+            title : 'Compartilhar via...',
+            fileName : nameOfFile,
+            base64: urlBase64,
+            sucessMsg : "Compartilhado com sucesso!"
+        };
+
+        function callBackSuccess (result) {
+          console.log('callBackSuccess');
+        }
+        
+        function callBackError (result) {
+          console.log('callBackError');
+        }
+
+        if (ionic.Platform.isAndroid()) {
+          //WL.NativePage.show("com.original.share.SocialSharing", callBackFromNativePage, params);
+          cordova.exec(callBackSuccess, callBackError, "HASHPlugin", "socialSharing", [params.fileName, params.base64, params.title]); 
+        }else{
+          WL.NativePage.show("SocialSharingController", callBackFromNativePage, params);
+        }
+      }
+      
+      function htmlCanvas() {
+        var isBannerPix = $rootScope.showPixBox;
+        console.log('isBannerPix: ' + isBannerPix);
+        console.log('Captura do comprovante');
+        var regionId = $scope.regionId;
+        console.log('Regiao selecionada: ' + regionId);
+        if (isBannerPix && !$rootScope.isFromReceipt) {
+          $ionicScrollDelegate.scrollTo(0, 300);
+          $rootScope.showPixBox = false;
+        } else {
+          $ionicScrollDelegate.scrollTop();
+        }
+        var element = document.querySelector(regionId);
+        html2canvas(element, {
+          logging: true,
+          useCORS: true,
+          allowTaint: true
+        }).then(function (canvas) {
+          var myImage = canvas.toDataURL("img/png");
+          var res = myImage.slice(22, myImage.lenght);
+          LoadingService.hide();
+          startSharing("Comprovante"+new Date().getTime()+".png", res);
+        }).catch(function(error) {
+          LoadingService.hide();
+        });
+      }
+      
+
+      function callBackFromNativePage(data){
+        console.log('callBackFromNativePage');
+      }
+
+      $scope.generatePrint = function generatePrint(){
+        LoadingService.showDefault();
+        reportFunc(function success(result){
+          LoadingService.hide();
+          $print.genericPrint(result.invocationResult.name, result.invocationResult.file, success, failure);
+        }, failure, $scope.extraParam);
+      };
+
+      $scope.generateMail = function generateMail(){
+        LoadingService.showDefault();
+        reportFunc(function success(result){
+          LoadingService.hide();
+          $mail.genericMail($scope.mailSubject
+              , result.invocationResult.name
+              , result.invocationResult.file
+              , success
+              , failure);
+        }, failure, $scope.extraParam);
+      };
+
+      function success(){
+        // do nothing
+      }
+
+      function failure(){
+        LoadingService.hide();
+        AlertService.show($filter('translate')('COMMON_EXPORT_ERROR'));
+      }
+    }
+  };
+}]);
+
+
+<!-- EXEMPLO DE USO -->
+    <div class="section">
+      <sei
+        report-for="genericMap"
+        extra-param="pdfParams"
+        mail-subject="mailSubject"
+        enable-share="enableShare"
+        information-voucher = "informationVoucher"
+        email="false"
+        print="false"
+        region-id="regionId"
+       ></sei>
+    </div>

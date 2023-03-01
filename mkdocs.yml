@@ -1,0 +1,80 @@
+site_name: Workspace
+theme:
+  name: readthedocs
+  prev_next_buttons_location: none
+  titles_only: true
+extra_css:
+    - css/index.css
+use_directory_urls: false
+nav:
+  - 'Introdução':
+    - 'Sobre': 'index.md'
+    - 'Conhecendo a Arquitetura': 'about.md'
+  - 'Tutorial':
+    - 'Pré-Requisitos': 'first-steps/prerequisites.md'
+    - 'Configurando Workspace (CLI)': 'first-steps/config-workspace.md'
+    - 'Configurando Ambiente (Automático)': 'first-steps/config-env-auto.md'
+    - 'Configurando Ambiente (Manual)': 'first-steps/config-env-manual.md'
+    - 'Portas Reservadas': 'first-steps/ports.md'
+    - '>> CLI: Ambiente': 'commands/env.md'
+    - '>> CLI: Desenvolvimento': 'commands/dev.md'
+    - '>> CLI: Design System': 'commands/design.md'
+  - 'Guia: Desenvolvimento':
+    - 'Pré-Requisitos': 'development/general/prerequisites.md'
+    - 'Configuração': 'development/general/config-dev.md'
+    - 'Execução': 'development/general/flow-dev.md'
+    - '>> GIT: Flow': 'development/general/git/flow.md'
+    - '>> GIT: Commits': 'development/general/git/commit.md'
+  - 'Guia: @mobk/main':
+    - 'Configuração': 'development/main/config.md'
+    - '>> DEV: Variáveis .env': 'development/main/dev-env.md'
+    - '>> DEV: Globais': 'development/main/dev-globals.md'
+    - '>> TEST: Unit/E2E': 'development/main/dev-tests.md'
+    - '>> MISC: Execução/Debug': 'development/main/how-to-test.md'
+    - '>> MISC: Documentação': 'development/main/how-to-doc.md'
+  - 'Guia: @mobk/engine':
+    - 'Configuração': 'development/engine/config.md'
+    - '>> DEV: API + Query': 'development/engine/dev-api.md'
+    - '>> DEV: Hooks': 'development/engine/dev-hooks.md'
+    - '>> DEV: Native Modules': 'development/engine/dev-native-modules.md'
+    - '>> DEV: Store': 'development/engine/dev-store.md'
+    - '>> DEV: Utilitários': 'development/engine/dev-utils.md'
+    - '>> TEST: Unit/E2E': 'development/engine/dev-tests.md'
+    - '>> MISC: Execução/Debug': 'development/engine/how-to-test.md'
+    - '>> MISC: Documentação': 'development/engine/how-to-doc.md'
+  - 'Guia: @mobk/design-system':
+    - 'Configuração': 'development/design-system/config.md'
+    - '>> DEV: Componentes': 'development/design-system/dev-components.md'
+    - '>> DEV: Versionamento': 'development/design-system/dev-versioning.md'
+    - '>> DEV: Tema': 'development/design-system/dev-theme.md'
+    - '>> DEV: Storybook': 'development/design-system/dev-storybook.md'
+    - '>> TEST: Unit/E2E': 'development/design-system/dev-tests.md'
+    - '>> MISC: Execução/Debug': 'development/design-system/how-to-test.md'
+    - '>> MISC: Documentação': 'development/design-system/how-to-doc.md'
+  - 'Guia: @mobk/module-*':
+    - 'Criando Novos Módulos': 'development/modules/creating.md'
+    - 'Configuração': 'development/modules/config.md'
+    - '>> DEV: Componentes': 'development/modules/dev-components.md'
+    - '>> DEV: Navegação': 'development/modules/dev-navigation.md'
+    - '>> DEV: Serviços': 'development/modules/dev-services.md'
+    - '>> DEV: Store': 'development/modules/dev-store.md'
+    - '>> TEST: Unit/E2E': 'development/modules/dev-tests.md'
+    - '>> MISC: Execução/Debug': 'development/modules/how-to-test.md'
+    - '>> MISC: Documentação': 'development/modules/how-to-doc.md'
+  - 'Build & Deploy':
+    - '>> APP: Fastlane': 'build-deploy/app-fastlane.md'
+    - '>> APP: CodePush': 'build-deploy/app-codepush.md'
+    - '>> MODULES: Build': 'build-deploy/modules-build.md'
+    - '>> MODULES: Release': 'build-deploy/modules-release.md'
+    - '>> MODULES: Fastlane': 'build-deploy/modules-fastlane.md'
+  - 'Apêndices':
+    - 'Dicas': 'appendix/tips.md'
+    - 'Troubleshooting': 'appendix/troubleshooting.md'
+    - '>> DECISION: Modularização': 'appendix/decisions/modularization.md'
+    - '>> DECISION: Engine do RN': 'appendix/decisions/engine-rn.md'
+    - '>> DECISION: Conexão com API': 'appendix/decisions/api.md'
+    - '>> DECISION: Ponte Nativa': 'appendix/decisions/native-bridge.md'
+    - '>> DECISION: State': 'appendix/decisions/state-management.md'
+    - '>> DECISION: Testes (Unit)': 'appendix/decisions/unit-tests.md'
+    - '>> DECISION: Testes (E2E)': 'appendix/decisions/automated-tests.md'
+    - '>> DECISION: Ferramentas': 'appendix/decisions/toolset.md'

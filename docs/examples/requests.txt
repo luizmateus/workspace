@@ -1,0 +1,58 @@
+Login:
+
+POST
+
+URL: https://h.openbanking.original.com.br/auth-customer-pf/v1/access-token
+
+BODY: {
+  "segment":"P",
+  "documentNumber":"55155114845",
+  "channel":"MB",
+  "password":"uriSequence=EEBBEE;uriMatrix=A@95ZVEQ-B@13VUFK-C@84EMBJ-D@76SUBE-E@02WSKC-F@OMMMSF;",
+  "username":"UHMOBKDU1",
+  "appKey":"ck9Ux1608q0CRs3K"
+}
+
+HEADERS:
+x-transaction-id: "6f4eb8ce-abe5-48e0-81f5-0edf5e238c14",
+Authorization: "Basic MDE0ZTA2YWUtZTk0Mi0zODI2LTkzYjAtYjVjN2JiYWI0YzhlOjA3NmUzNWYxLWI1NTQtM2ViYi04ZTRkLTM0OTAxMTY0Njg3Mg==",
+Content-Type: "application/json",
+
+###################################################################################################################################
+
+CRYPTO
+
+POST
+
+URL: https://h.openbanking.original.com.br/crypto/v1/keys
+
+BODY: {
+  "id" : "MDrWbAe9ChNz6EGYNFqNDlI+dEMNt4b20TNMs2Ko2QyRN/BX81nWbqeK840Xh+bIl08SLn9ziqKTvgGQCcqyZi0Zp3p9wsrHkD9QJ1/VW5p6U0HDHR7BpI+FjKlkV2ImtaepaLpGXgjJdOCVOwOlVem6y5uVnWup83kgpsJDksh1yb1H7uwbfuzEcBVWziBL9I7k6iNcjtaArBa5FeISZPBQFFpHw7ezaCpCxW2fI2H7/HlGQ7EyrOcuEXOiyRX8wgN2Q5IWlucI2pNeA7kQL20rgDP1QjxhvYSRYLNq9EhQkqVLNRC6YZGi3u5ED2b+OqcYyrglrdKkGuxBckV12w==", 
+  "key" : "CiNavQwkAWF3dn9WmKe+yHO7ROLq+PMC8vj+rkme/hvxHZbYT32rcICblQJ0QZ+fBTGYiQ7D+guCAuZ7AGliqSNHSYE5N4eV+95FHB6Y3zwT6/9kEWS3eG01bQt8qx+6LAqQ6L7hgdGmcGL9k9Hk4Eg1Zi36LIzcVSi1r9uAwFOISsko05gRb9qH1CQyWqRkA91ZAePwFGey2m9ApupxKlqjq/BAqXbbrlfk2l5nefm/wRpAPxs401Z/TIZANzkUFZjmwxwUK0AOeGYSV+elLi6dGz13T+G9PFXm7UCdiQtqFfRPskN/2Hs6dQIPq6Byl2Qj5gb5UP1CKXhC83EwGQ=="
+}
+
+HEADERS:
+x-transaction-id: "6f4eb8ce-abe5-48e0-81f5-0edf5e238c14",
+x-transaction-info: "eyJjb21wYW55SWRlbnRpZmljYXRpb25OdW1iZXIiOiI2MDUwMjk2MTU0NiIsImRldmljZUlkIjoiYTE3OTg5MjUtYTJjMC0zNzUzLWIxNDctZTMxNzYzOTM5YmY5IiwiaXBBZGRyZXNzIjoiMTkyLjE2OC4xMDAuNjciLCJsYXRpdHVkZSI6LTE3Ljc4Mzc4Mzc4Mzc4Mzc4MiwibG9uZ2l0dWRlIjotNTAuOTAwNzE0NjA2NDUxNjIsIm9wZXJhdGlvbklkIjoiOTQ5ODU5MSIsInN1YlByb2R1Y3RJZCI6IjAwMTQiLCJ0b2tlblNlcmlhbE51bWJlciI6IiIsInVzZXJQcm9maWxlIjoiTSJ9",
+Authorization: "Bearer MDE0ZTA2YWUtZTk0Mi0zODI2LTkzYjAtYjVjN2JiYWI0YzhlOjM3YTVlY2NlLTAwNzktM2E4NC04NTNiLTRjOWY5NGQ0MGMyOQ==",
+Content-Type: "application/json"
+
+###################################################################################################################################
+
+BALANCE
+
+POST
+
+URL: https://h.openbanking.original.com.br/current-account/v1/accounts/balance/searches
+
+BODY: { }
+
+HEADERS:
+x-transaction-id : "6f4eb8ce-abe5-48e0-81f5-0edf5e238c14",
+x-transaction-info : "eyJjb21wYW55SWRlbnRpZmljYXRpb25OdW1iZXIiOiI2MDUwMjk2MTU0NiIsImRldmljZUlkIjoiYTE3OTg5MjUtYTJjMC0zNzUzLWIxNDctZTMxNzYzOTM5YmY5IiwiaXBBZGRyZXNzIjoiMTkyLjE2OC4xMDAuNjciLCJsYXRpdHVkZSI6LTE3Ljc4Mzc4Mzc4Mzc4Mzc4MiwibG9uZ2l0dWRlIjotNTAuOTAwNzE0NjA2NDUxNjIsIm9wZXJhdGlvbklkIjoiOTQ5ODU5MSIsInN1YlByb2R1Y3RJZCI6IjAwMTQiLCJ0b2tlblNlcmlhbE51bWJlciI6IiIsInVzZXJQcm9maWxlIjoiTSJ9",
+original-key : "MDrWbAe9ChNz6EGYNFqNDlI+dEMNt4b20TNMs2Ko2QyRN/BX81nWbqeK840Xh+bIl08SLn9ziqKTvgGQCcqyZi0Zp3p9wsrHkD9QJ1/VW5p6U0HDHR7BpI+FjKlkV2ImtaepaLpGXgjJdOCVOwOlVem6y5uVnWup83kgpsJDksh1yb1H7uwbfuzEcBVWziBL9I7k6iNcjtaArBa5FeISZPBQFFpHw7ezaCpCxW2fI2H7/HlGQ7EyrOcuEXOiyRX8wgN2Q5IWlucI2pNeA7kQL20rgDP1QjxhvYSRYLNq9EhQkqVLNRC6YZGi3u5ED2b+OqcYyrglrdKkGuxBckV12w==",
+Authorization: "Bearer MDE0ZTA2YWUtZTk0Mi0zODI2LTkzYjAtYjVjN2JiYWI0YzhlOjM3YTVlY2NlLTAwNzktM2E4NC04NTNiLTRjOWY5NGQ0MGMyOQ==",
+Content-Type: "application/json"
+
+
+

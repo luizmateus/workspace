@@ -1,0 +1,1 @@
+Deve ser desenvolvido seguindo os mesmos padrões do [Desenvolvimento de Store na Engine](../engine/dev-store.md), com a ressalva de que será dentro de um único módulo.

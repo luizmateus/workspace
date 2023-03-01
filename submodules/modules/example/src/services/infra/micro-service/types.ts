@@ -1,0 +1,1 @@
+export type TKeysMicroService = 'MS_LOGIN_ROUTE' | 'MS_LOGOUT_ROUTE' | 'MS_CHANGE_PASSWORD_ROUTE';

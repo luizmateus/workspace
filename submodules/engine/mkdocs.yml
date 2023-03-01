@@ -1,0 +1,30 @@
+site_name: Engine
+theme:
+  name: readthedocs
+  prev_next_buttons_location: none
+  titles_only: true
+extra_css:
+    - css/index.css
+use_directory_urls: false
+nav:
+  - 'index.md'
+  - 'APIs':
+    - 'Overview': 'api/index.md'
+    - 'API': 'api/api.md'
+  - 'Zustand (Store)':
+    - 'Overview': 'store/index.md'
+    - 'AppStore': 'store/app-store.md'
+    - 'AuthStore': 'store/auth-store.md'
+  - 'Contexts':
+    - 'Overview': 'contexts/index.md'
+    - 'Global': 'contexts/global.md'
+    - 'Theme': 'contexts/theme.md'
+  - 'Native Modules':
+    - 'Overview': 'native-modules/index.md'
+    - 'Crypto': 'native-modules/crypto.md'
+  - 'Utilitários':
+    - 'Overview': 'utils/index.md'
+    - 'Firebase': 'utils/firebase.md'
+    - 'Tagueamento': 'utils/tagging.md'
+    - 'Moeda': 'utils/currency.md'
+    - 'Data': 'utils/date.md'

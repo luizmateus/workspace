@@ -1,0 +1,25 @@
+EXEMPLO DE CRIPTO IOS
+
+// Private Key
+let key = SymmetricCryptography.getRandomByteKey()
+// Custom Id
+let id = generateUniqueID()
+
+// Private Key and CustomId ecrypted
+guard let encryptedAESKey = AsymmetricCryptography.encryptV2(value: key), let idEncrypted = AsymmetricCryptography.encryptV2(value: id) else {
+    return nil
+}
+
+SecurityKeyUtils.shared.aesKey = key
+SecurityKeyUtils.shared.aesKeyEncrypted = encryptedAESKey
+SecurityKeyUtils.shared.randomId = id
+SecurityKeyUtils.shared.randomIdEncrypted = idEncrypted
+
+let secretCredentials = SecretCredentials(id: idEncrypted, key: encryptedAESKey)
+
+############################################################################################################
+
+Esse objeto "SecretCredentials" é o objeto que enviamos no https://h.openbanking.original.com.br/crypto/v1/keys
+
+E quando for consumir o serviço que precisa de cripto (https://h.openbanking.original.com.br/current-account/v1/accounts/balance/searches), no header precisa enviar o atributo "original-key" e tem que ser enviado o idEncrypted
+

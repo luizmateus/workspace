@@ -1,0 +1,31 @@
+import type { IJWTDecoded } from 'src/services/domain/auth-customer/save-user';
+import type { ICreateKeys } from 'src/services/domain/crypto/encrypt';
+import type { IAccessTokenResponse } from '../../../../src/services/domain/auth-customer/access-token';
+
+export const dataAccessTokenMock: IAccessTokenResponse = {
+  access_token: 'qwe123r-123123-89120-jdqn-213',
+  canLogin: true,
+  expires_in: 1000,
+  firstLogin: true,
+  jwt: '',
+  keyChange: true,
+  lastAccessDate: '',
+  token_type: '',
+};
+
+export const createKeysMock: Promise<ICreateKeys> = new Promise(resolve => {
+  resolve({ encryptedAESKey: '', id: '', idEncrypted: '', key: '' });
+});
+
+export const JWTDecodedMock: IJWTDecoded = {
+  aud: '',
+  claims: {
+    context: {} as any,
+    customer: {} as any,
+    accounts: {} as any,
+  },
+  exp: 0,
+  iat: 0,
+  iss: '',
+  jti: '',
+};

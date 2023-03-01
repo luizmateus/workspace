@@ -1,0 +1,14 @@
+.wy-side-nav-search, .wy-nav-top {
+  background-color: #00a857;
+}
+
+.caption-text {
+  color: #04904c;
+}
+
+.wy-menu * {
+  background-color: #343131 !important;
+  border-bottom: unset !important;
+  border-top: unset !important;
+  color: #d9d9d9 !important;
+}

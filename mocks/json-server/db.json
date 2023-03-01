@@ -1,0 +1,12 @@
+{
+  "login": {
+    "logged_in": true,
+    "user_id": 1
+  },
+  "logout": {
+    "logged_in": false
+  },
+  "changePassword": {
+    "password": "abcd1234"
+  }
+}
